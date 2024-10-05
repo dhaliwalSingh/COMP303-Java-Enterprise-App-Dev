@@ -1,0 +1,87 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Card layout for the order summary */
+.card {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+/* Header for the order details */
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Subheadings for details */
+h3 {
+    color: #555;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* List styles for the order details */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Success message after submitting order */
+.success-message {
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Flexbox layout for aligning order details */
+.order-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.details-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* Aligning all details properly */
+.details-section ul {
+    margin-left: 20px;
+}
+
+/* Responsive design for smaller devices */
+@media (max-width: 768px) {
+    .container, .card {
+        max-width: 90%;
+    }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order Details</title>
+    <link rel="stylesheet" type="text/css" href="/css/order-page.css">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="success-message">
+            <h2>Welcome <span th:text="${order.fullName}">User</span>.</h2>
+        </div>
+
+        <div class="order-details">
+            <div class="details-section">
+                <h3>Your Order details are as follows:</h3>
+                <ul>
+                    <li>Email Address: <span th:text="${order.email}">email</span></li>
+                    <li>Phone Number: <span th:text="${order.phoneNumber}">phone</span></li>
+                    <li>Address: <span th:text="${order.address}">address</span></li>
+                </ul>
+            </div>
+
+            <div class="details-section">
+                <h3>Phone Details:</h3>
+                <ul>
+                    <li>Phone Brand: <span th:text="${order.phoneBrand}">brand</span></li>
+                    <li>Phone Model: <span th:text="${order.phoneModel}">model</span></li>
+                    <li>Phone Price: CAD <span th:text="${pricePerUnit}">price</span></li>
+                    <li>Quantity: <span th:text="${order.quantity}">quantity</span></li>
+                </ul>
+            </div>
+
+            <div class="details-section">
+                <h3>Total: CAD <span th:text="${totalPrice}">total</span></h3>
+            </div>
+        </div>
+

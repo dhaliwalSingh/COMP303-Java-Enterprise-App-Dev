@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Smart Phones Order Form</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h2>Smart Phones Order Form</h2>
+    <form th:action="@{/submitOrder}" method="post">
+      <div>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+      </div>
+      <div>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+      </div>
+      <div>
+        <label for="address">Billing Address:</label>
+        <input type="text" id="address" name="address" required>
+      </div>
+
+      <!-- Phone Brand Selection -->
+      <div>
+        <label for="phoneBrand">Phone Brand:</label>
+        <select id="phoneBrand" name="phoneBrand" required onchange="updatePhoneModels()">
+          <option value="">-- Select Brand --</option>
+          <option value="iPhone">iPhone</option>
+          <option value="Samsung">Samsung</option>
+          <option value="Google">Google</option>
+          <option value="BlackBerry">BlackBerry</option>
+        </select>
+      </div>
+
+      <!-- Phone Model Selection -->
+      <div>
+        <label for="phoneModel">Phone Model:</label>
+        <select id="phoneModel" name="phoneModel" required>
+          <!-- iPhone Models -->
+          <option data-brand="iPhone" value="iPhone 11">iPhone 11</option>
+          <option data-brand="iPhone" value="iPhone 11 Pro">iPhone 11 Pro</option>
+          <option data-brand="iPhone" value="iPhone 11 Pro Max">iPhone 11 Pro Max</option>
+          <option data-brand="iPhone" value="iPhone 12">iPhone 12</option>
+          <option data-brand="iPhone" value="iPhone 12 Pro">iPhone 12 Pro</option>
+          <option data-brand="iPhone" value="iPhone 12 Pro Max">iPhone 12 Pro Max</option>
+          <option data-brand="iPhone" value="iPhone 13">iPhone 13</option>
+          <option data-brand="iPhone" value="iPhone 13 Pro">iPhone 13 Pro</option>
+          <option data-brand="iPhone" value="iPhone 13 Pro Max">iPhone 13 Pro Max</option>
+          <option data-brand="iPhone" value="iPhone 14">iPhone 14</option>
+          <option data-brand="iPhone" value="iPhone 14 Pro">iPhone 14 Pro</option>
+          <option data-brand="iPhone" value="iPhone 14 Pro Max">iPhone 14 Pro Max</option>
+          <option data-brand="iPhone" value="iPhone 15">iPhone 15</option>
+          <option data-brand="iPhone" value="iPhone 15 Pro">iPhone 15 Pro </option>
+          <option data-brand="iPhone" value="iPhone 15 Pro Max">iPhone 15 Pro Max</option>
+          <option data-brand="iPhone" value="iPhone SE">iPhone SE</option>
+
+          <!-- Samsung Models -->
+          <option data-brand="Samsung" value="Samsung Galaxy S21">Samsung Galaxy S21</option>
+          <option data-brand="Samsung" value="Samsung Galaxy Note 20">Samsung Galaxy Note 20</option>
+          <option data-brand="Samsung" value="Samsung Galaxy Z Fold3">Samsung Galaxy Z Fold3</option>
+
+          <!-- Google Models -->
+          <option data-brand="Google" value="Google Pixel 5">Google Pixel 5</option>
+          <option data-brand="Google" value="Google Pixel 6">Google Pixel 6</option>
+          <option data-brand="Google" value="Google Pixel 6 Pro">Google Pixel 6 Pro</option>
+
+          <!-- BlackBerry Models -->
+          <option data-brand="BlackBerry" value="BlackBerry Key2">BlackBerry Key2</option>
+          <option data-brand="BlackBerry" value="BlackBerry KeyOne">BlackBerry KeyOne</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+      </div>
+      <div>
+        <button type="submit">Submit Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- JavaScript to filter models based on selected brand -->
+<script>
+  function updatePhoneModels() {
+    const selectedBrand = document.getElementById('phoneBrand').value;
+    const phoneModelSelect = document.getElementById('phoneModel');
+    const options = phoneModelSelect.querySelectorAll('option');
+
+    // Show only models that match the selected brand
+    options.forEach(option => {
+      if (option.dataset.brand === selectedBrand || option.value === "") {
+        option.style.display = 'block';  // Show option
+      } else {
+        option.style.display = 'none';  // Hide option
+      }
+    });
+
+    // Reset phone model selection
+    phoneModelSelect.value = "";
+  }
+</script>
+</body>
+</html>
