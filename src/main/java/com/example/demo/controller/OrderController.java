@@ -5,23 +5,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class OrderController {
-
-    @PostMapping("/submitOrder")
-    public String submitOrder(@ModelAttribute Order order, Model model) {
-        // Calculate price
-        double pricePerUnit = 979.00; // This would depend on the phone model in a real app
+    @RequestMapping("/submitOrder")
+    public ModelAndView submitOrder(@ModelAttribute("order") Order order){
+        double pricePerUnit = 979.00;
         double totalPrice = pricePerUnit * order.getQuantity();
+        ModelAndView mview = new ModelAndView();
+        mview.setViewName("show-order");
+        mview.addObject("order", order);
+        mview.addObject("pricePerUnit", pricePerUnit);
+        mview.addObject("totalPrice", totalPrice);
 
-        // Add the calculated price to the model
-        model.addAttribute("order", order);
-        model.addAttribute("pricePerUnit", pricePerUnit);
-        model.addAttribute("totalPrice", totalPrice);
-
-        // Redirect to the show-order.html page
-        return "show-order";
+        return mview;
     }
 }
 
