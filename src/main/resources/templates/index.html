@@ -41,40 +41,40 @@
       <!-- Phone Model Selection -->
       <div>
         <label for="phoneModel">Phone Model:</label>
-        <select id="phoneModel" name="phoneModel" required>
+        <select id="phoneModel" name="phoneModel" required onchange="updatePrice()">
           <!-- iPhone Models -->
-          <option data-brand="iPhone" value="iPhone 11">iPhone 11</option>
-          <option data-brand="iPhone" value="iPhone 11 Pro">iPhone 11 Pro</option>
-          <option data-brand="iPhone" value="iPhone 11 Pro Max">iPhone 11 Pro Max</option>
-          <option data-brand="iPhone" value="iPhone 12">iPhone 12</option>
-          <option data-brand="iPhone" value="iPhone 12 Pro">iPhone 12 Pro</option>
-          <option data-brand="iPhone" value="iPhone 12 Pro Max">iPhone 12 Pro Max</option>
-          <option data-brand="iPhone" value="iPhone 13">iPhone 13</option>
-          <option data-brand="iPhone" value="iPhone 13 Pro">iPhone 13 Pro</option>
-          <option data-brand="iPhone" value="iPhone 13 Pro Max">iPhone 13 Pro Max</option>
-          <option data-brand="iPhone" value="iPhone 14">iPhone 14</option>
-          <option data-brand="iPhone" value="iPhone 14 Pro">iPhone 14 Pro</option>
-          <option data-brand="iPhone" value="iPhone 14 Pro Max">iPhone 14 Pro Max</option>
-          <option data-brand="iPhone" value="iPhone 15">iPhone 15</option>
-          <option data-brand="iPhone" value="iPhone 15 Pro">iPhone 15 Pro </option>
-          <option data-brand="iPhone" value="iPhone 15 Pro Max">iPhone 15 Pro Max</option>
-          <option data-brand="iPhone" value="iPhone SE">iPhone SE</option>
+          <option data-brand="iPhone" data-price="699" value="iPhone 11">iPhone 11</option>
+          <option data-brand="iPhone" data-price="999" value="iPhone 11 Pro">iPhone 11 Pro</option>
+          <option data-brand="iPhone" data-price="1099" value="iPhone 11 Pro Max">iPhone 11 Pro Max</option>
+          <option data-brand="iPhone" data-price="799" value="iPhone 12">iPhone 12</option>
+          <option data-brand="iPhone" data-price="999" value="iPhone 12 Pro">iPhone 12 Pro</option>
+          <option data-brand="iPhone" data-price="1099" value="iPhone 12 Pro Max">iPhone 12 Pro Max</option>
+          <option data-brand="iPhone" data-price="1099" value="iPhone 13">iPhone 13</option>
+          <option data-brand="iPhone" data-price="1199" value="iPhone 13 Pro">iPhone 13 Pro</option>
+          <option data-brand="iPhone" data-price="1299" value="iPhone 13 Pro Max">iPhone 13 Pro Max</option>
+          <option data-brand="iPhone" data-price="799" value="iPhone SE">iPhone SE</option>
 
           <!-- Samsung Models -->
-          <option data-brand="Samsung" value="Samsung Galaxy S21">Samsung Galaxy S21</option>
-          <option data-brand="Samsung" value="Samsung Galaxy Note 20">Samsung Galaxy Note 20</option>
-          <option data-brand="Samsung" value="Samsung Galaxy Z Fold3">Samsung Galaxy Z Fold3</option>
+          <option data-brand="Samsung" data-price="999" value="Samsung Galaxy S21">Samsung Galaxy S21</option>
+          <option data-brand="Samsung" data-price="1099" value="Samsung Galaxy Note 20">Samsung Galaxy Note 20</option>
+          <option data-brand="Samsung" data-price="1999" value="Samsung Galaxy Z Fold3">Samsung Galaxy Z Fold3</option>
 
           <!-- Google Models -->
-          <option data-brand="Google" value="Google Pixel 5">Google Pixel 5</option>
-          <option data-brand="Google" value="Google Pixel 6">Google Pixel 6</option>
-          <option data-brand="Google" value="Google Pixel 6 Pro">Google Pixel 6 Pro</option>
+          <option data-brand="Google" data-price="599" value="Google Pixel 5">Google Pixel 5</option>
+          <option data-brand="Google" data-price="799" value="Google Pixel 6">Google Pixel 6</option>
+          <option data-brand="Google" data-price="999" value="Google Pixel 6 Pro">Google Pixel 6 Pro</option>
 
           <!-- BlackBerry Models -->
-          <option data-brand="BlackBerry" value="BlackBerry Key2">BlackBerry Key2</option>
-          <option data-brand="BlackBerry" value="BlackBerry KeyOne">BlackBerry KeyOne</option>
+          <option data-brand="BlackBerry" data-price="499" value="BlackBerry Key2">BlackBerry Key2</option>
+          <option data-brand="BlackBerry" data-price="399" value="BlackBerry KeyOne">BlackBerry KeyOne</option>
         </select>
       </div>
+
+      <div>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" readonly>
+      </div>
+
 
       <div>
         <label for="quantity">Quantity:</label>
@@ -105,6 +105,17 @@
 
     // Reset phone model selection
     phoneModelSelect.value = "";
+  }
+  function updatePrice() {
+    // Get the selected phone model
+    var phoneModelSelect = document.getElementById("phoneModel");
+    var selectedOption = phoneModelSelect.options[phoneModelSelect.selectedIndex];
+
+    // Get the price from the selected option's data-price attribute
+    var price = selectedOption.getAttribute("data-price");
+
+    // Update the price input field
+    document.getElementById("price").value = price;
   }
 </script>
 </body>
